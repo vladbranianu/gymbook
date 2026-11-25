@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+app/build/
+
+# Android Studio
+.idea/
+*.iml
+local.properties
+
+# Keystore & signing — NEVER commit these
+keystore.properties
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Release artifacts (signed binaries — never commit)
+app/release/
+*.aab
+*.apk
+
+# Local tooling
+.claude/settings.local.json
+.kotlin/

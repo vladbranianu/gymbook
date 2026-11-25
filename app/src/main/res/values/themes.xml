@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base splash — used as fallback and parent for accent variants -->
+    <style name="Theme.Gymable.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/gym_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_mint</item>
+        <item name="postSplashScreenTheme">@style/Theme.Gymable</item>
+    </style>
+
+    <!-- Per-accent splash variants — switched at runtime in MainActivity -->
+    <style name="Theme.Gymable.Starting.MintGreen" parent="Theme.Gymable.Starting">
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_mint</item>
+    </style>
+    <style name="Theme.Gymable.Starting.LavenderPurple" parent="Theme.Gymable.Starting">
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_lavender</item>
+    </style>
+    <style name="Theme.Gymable.Starting.GrapefruitPink" parent="Theme.Gymable.Starting">
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_grapefruit</item>
+    </style>
+    <style name="Theme.Gymable.Starting.BlueBell" parent="Theme.Gymable.Starting">
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_blue_bell</item>
+    </style>
+    <style name="Theme.Gymable.Starting.StrawGold" parent="Theme.Gymable.Starting">
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_accent_straw_gold</item>
+    </style>
+
+    <style name="Theme.Gymable" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/gym_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+    </style>
+</resources>

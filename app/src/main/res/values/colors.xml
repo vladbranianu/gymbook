@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gym_background">#FF0E0F11</color>
+    <color name="gym_accent">#FF3DDC97</color>
+    <color name="ic_launcher_background">#FF0E0F11</color>
+    <color name="splash_accent_mint">#FF3DDC97</color>
+    <color name="splash_accent_lavender">#FFA06CD5</color>
+    <color name="splash_accent_grapefruit">#FFFC7375</color>
+    <color name="splash_accent_blue_bell">#FF129FF8</color>
+    <color name="splash_accent_straw_gold">#FFEFD56B</color>
+</resources>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #555; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+  .card {
+    width: 1024px;
+    height: 500px;
+    background: #0E0F11;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Background grid lines */
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(61,220,151,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,220,151,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Glow blob */
+  .glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,220,151,0.10) 0%, transparent 70%);
+    top: -150px;
+    left: -100px;
+  }
+  .glow2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(61,220,151,0.06) 0%, transparent 70%);
+    bottom: -100px;
+    right: 100px;
+  }
+
+  /* Chart line */
+  .chart-area {
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    width: 380px;
+    height: 320px;
+    opacity: 0.9;
+  }
+
+  /* Left content */
+  .content {
+    position: absolute;
+    left: 72px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #3DDC97;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .app-name {
+    font-size: 86px;
+    font-weight: 800;
+    color: #F2F3F5;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .app-name span {
+    color: #3DDC97;
+  }
+
+  .tagline {
+    font-size: 22px;
+    font-weight: 400;
+    color: #A8ADB5;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+  }
+
+  .pills {
+    display: flex;
+    gap: 10px;
+  }
+
+  .pill {
+    background: #16181B;
+    border: 1px solid #34383E;
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #A8ADB5;
+  }
+
+  .pill.accent {
+    background: #123022;
+    border-color: #3DDC97;
+    color: #3DDC97;
+  }
+
+  /* Divider line */
+  .divider {
+    position: absolute;
+    left: 480px;
+    top: 60px;
+    bottom: 60px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #34383E 30%, #34383E 70%, transparent);
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="glow2"></div>
+
+  <div class="content">
+    <div class="eyebrow">Fitness Tracker</div>
+    <div class="app-name">Gym<span>Book</span></div>
+    <div class="tagline">Track every set. Beat every record.</div>
+    <div class="pills">
+      <div class="pill accent">Workout Log</div>
+      <div class="pill">Stats &amp; Charts</div>
+      <div class="pill">Personal Records</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Chart SVG -->
+  <div class="chart-area">
+    <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3DDC97" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#3DDC97" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#3DDC97" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#3DDC97" stop-opacity="1"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Grid lines -->
+      <line x1="0" y1="60"  x2="380" y2="60"  stroke="#34383E" stroke-width="1"/>
+      <line x1="0" y1="120" x2="380" y2="120" stroke="#34383E" stroke-width="1"/>
+      <line x1="0" y1="180" x2="380" y2="180" stroke="#34383E" stroke-width="1"/>
+      <line x1="0" y1="240" x2="380" y2="240" stroke="#34383E" stroke-width="1"/>
+
+      <!-- Y axis labels -->
+      <text x="0" y="55"  fill="#5C616A" font-size="11" font-family="system-ui">100kg</text>
+      <text x="0" y="115" fill="#5C616A" font-size="11" font-family="system-ui">80kg</text>
+      <text x="0" y="175" fill="#5C616A" font-size="11" font-family="system-ui">60kg</text>
+      <text x="0" y="235" fill="#5C616A" font-size="11" font-family="system-ui">40kg</text>
+
+      <!-- Fill area -->
+      <path d="M40,220 C70,210 90,200 120,185 C150,170 170,155 200,140 C230,125 255,110 280,90 C305,70 330,62 360,52 L360,270 L40,270 Z"
+            fill="url(#fillGrad)"/>
+
+      <!-- Line -->
+      <path d="M40,220 C70,210 90,200 120,185 C150,170 170,155 200,140 C230,125 255,110 280,90 C305,70 330,62 360,52"
+            fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)"/>
+
+      <!-- Dots -->
+      <circle cx="40"  cy="220" r="3.5" fill="#272B30" stroke="#3DDC97" stroke-width="1.5"/>
+      <circle cx="120" cy="185" r="3.5" fill="#272B30" stroke="#3DDC97" stroke-width="1.5"/>
+      <circle cx="200" cy="140" r="3.5" fill="#272B30" stroke="#3DDC97" stroke-width="1.5"/>
+      <circle cx="280" cy="90"  r="3.5" fill="#272B30" stroke="#3DDC97" stroke-width="1.5"/>
+
+      <!-- Last dot (highlighted) -->
+      <circle cx="360" cy="52" r="6"   fill="#3DDC97"/>
+      <circle cx="360" cy="52" r="3"   fill="#0E0F11"/>
+
+      <!-- Record badge -->
+      <rect x="290" y="24" width="82" height="22" rx="11" fill="#123022" stroke="#3DDC97" stroke-width="1"/>
+      <text x="331" y="39" fill="#3DDC97" font-size="11" font-family="system-ui" font-weight="600" text-anchor="middle">New Record</text>
+
+      <!-- X labels -->
+      <text x="40"  y="290" fill="#5C616A" font-size="11" font-family="system-ui" text-anchor="middle">Jan</text>
+      <text x="120" y="290" fill="#5C616A" font-size="11" font-family="system-ui" text-anchor="middle">Feb</text>
+      <text x="200" y="290" fill="#5C616A" font-size="11" font-family="system-ui" text-anchor="middle">Mar</text>
+      <text x="280" y="290" fill="#5C616A" font-size="11" font-family="system-ui" text-anchor="middle">Apr</text>
+      <text x="360" y="290" fill="#3DDC97" font-size="11" font-family="system-ui" text-anchor="middle" font-weight="600">May</text>
+
+      <!-- Stat cards -->
+      <rect x="40"  y="300" width="90" height="16" rx="4" fill="#16181B" stroke="#34383E" stroke-width="1"/>
+      <text x="85"  y="312" fill="#A8ADB5" font-size="10" font-family="system-ui" text-anchor="middle">142 sessions</text>
+
+      <rect x="145" y="300" width="80" height="16" rx="4" fill="#16181B" stroke="#34383E" stroke-width="1"/>
+      <text x="185" y="312" fill="#A8ADB5" font-size="10" font-family="system-ui" text-anchor="middle">24 exercises</text>
+
+      <rect x="240" y="300" width="110" height="16" rx="4" fill="#123022" stroke="#3DDC97" stroke-width="1"/>
+      <text x="295" y="312" fill="#3DDC97" font-size="10" font-family="system-ui" text-anchor="middle" font-weight="600">↑ 42kg progress</text>
+    </svg>
+  </div>
+</div>
+
+<p style="color:#aaa; text-align:center; margin-top:16px; font-family:system-ui; font-size:13px;">
+  Open browser DevTools → set window to exactly 1024px wide → screenshot the card only
+</p>
+</body>
+</html>
