@@ -52,4 +52,4 @@ keyPassword=...
 ## Known limitations / roadmap
 
 - No automated tests yet — unit tests for repositories and ViewModels are the next priority.
-- Room schema changes currently use destructive migration; real `Migration`s are needed before the next schema bump.
+- Database schema is exported (`app/schemas/`) and upgrades from schema v7 onward must go through real Room migrations (see `Migrations.kt`); only installs older than v7 are still wiped on upgrade.

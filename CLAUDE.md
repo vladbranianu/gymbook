@@ -56,7 +56,7 @@ records          id, exerciseId (FK → exercises.id CASCADE, UNIQUE), maxWeight
 
 Sets live in their own `workout_sets` child table (one row per set, not fixed columns) — this supports any number of sets per exercise, plus nullable `weightRight`/`repsRight` for unilateral (single-limb) exercises. `rating` is per-session (1–10, default 5), set on all sessions from the same workout at confirm time via `WorkoutRepository.updateSessionRatings(ids, rating)`.
 
-Schema has grown from an earlier version 2 to version 7 with no `Migration`s defined — `DatabaseModule.provideGymDatabase()` uses `.fallbackToDestructiveMigration(dropAllTables = true)`, so every version bump wipes local data on upgrade. This is intentional pre-1.0 behavior; add real migrations before this matters for real user data.
+Schema is exported to `app/schemas/` (Room Gradle plugin). Schema versions 1–6 predate migrations and are still wiped on upgrade (`PRE_MIGRATION_SCHEMA_VERSIONS`); from version 7 onward every upgrade must have a `Migration` in `data/local/Migrations.kt` — there is no blanket destructive fallback anymore, a missing path crashes instead of deleting user data. See the checklist in `Migrations.kt`; `MigrationChainTest` (unit) and `MigrationTest` (androidTest) guard it.
 
 **View-only DAOs** (no entity, no migration needed): `ExerciseOverviewDao`, `WorkoutHistoryDao`, `DashboardDao`, `ExportDao` (all-suspend, read-only tree walk used for export).
 

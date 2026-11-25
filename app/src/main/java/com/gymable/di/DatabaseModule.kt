@@ -2,7 +2,9 @@ package com.gymable.di
 
 import android.content.Context
 import androidx.room.Room
+import com.gymable.data.local.ALL_MIGRATIONS
 import com.gymable.data.local.GymDatabase
+import com.gymable.data.local.PRE_MIGRATION_SCHEMA_VERSIONS
 import com.gymable.data.local.dao.DashboardDao
 import com.gymable.data.local.dao.ExerciseDao
 import com.gymable.data.local.dao.ExerciseOverviewDao
@@ -32,7 +34,8 @@ object DatabaseModule {
             GymDatabase::class.java,
             GymDatabase.DATABASE_NAME
         )
-            .fallbackToDestructiveMigration(dropAllTables = true)
+            .addMigrations(*ALL_MIGRATIONS)
+            .fallbackToDestructiveMigrationFrom(true, *PRE_MIGRATION_SCHEMA_VERSIONS)
             .build()
 
     @Provides

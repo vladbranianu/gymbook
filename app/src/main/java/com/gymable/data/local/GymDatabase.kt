@@ -28,8 +28,8 @@ import com.gymable.data.local.entity.WorkoutSet
         WorkoutSet::class,
         Record::class
     ],
-    version = 7,
-    exportSchema = false
+    version = GymDatabase.VERSION,
+    exportSchema = true
 )
 abstract class GymDatabase : RoomDatabase() {
     abstract fun gymDao(): GymDao
@@ -45,5 +45,6 @@ abstract class GymDatabase : RoomDatabase() {
 
     companion object {
         const val DATABASE_NAME = "gym_database.db"
+        const val VERSION = 7
     }
 }
