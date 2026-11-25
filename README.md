@@ -36,9 +36,13 @@ Note: the Kotlin namespace is `com.gymable` (the project's original name) while 
 
 Requirements: Android Studio (recent stable) with JDK 17+, Android SDK.
 
+`JAVA_HOME` must point to a full JDK, not a JRE — for example Android Studio's bundled one (`<Android Studio>/jbr`).
+
 ```bash
 ./gradlew assembleDebug
 ```
+
+On Windows (cmd/PowerShell), use `gradlew.bat assembleDebug` instead.
 
 Debug builds seed sample data on first launch (`BuildConfig.SEED_DATABASE`). Release builds are signed using a local, untracked `keystore.properties`:
 
